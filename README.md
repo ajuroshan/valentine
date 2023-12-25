@@ -1,4 +1,4 @@
-# Valentine Project
+<!-- # Valentine Project
 
 Welcome to the Valentine Project, where love meets algorithms and fun! This project is a delightful experiment crafted during those moments of free-spirited coding joy.
 
@@ -30,4 +30,4 @@ This project is licensed under the MIT License – spread the love, share the co
 Feel the algorithms of love, laugh at the randomness, and let the charm of technology bring a smile to your face. After all, love, like coding, is an adventure best enjoyed with a sense of fun and charisma! 💖✨
 
 
-#not generated with chatGPT 😐
+#not generated with chatGPT 😐 -->
