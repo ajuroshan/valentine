@@ -1,13 +1,35 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse
 from home.models import *
+from home.forms import ApplicationsForm
+from django.contrib import messages
 
 GOLDEN_RATIO = 1.61803398875
 
 # Create your views here.
-
 def home_view(request):
-    return HttpResponse(f"You are logged in as {request.user.username}")
+    user = request.user if request.user.is_authenticated else None
+    if user:
+        existing_application = Applications.objects.filter(user=user).first()
+    else:
+        existing_application = None
+
+    if request.method == 'POST':
+        # If the user has an existing application, retrieve it; otherwise, create a new one
+        form = ApplicationsForm(request.POST, instance=existing_application)
+        if form.is_valid():
+            # Save the updated form data
+            application = form.save(commit=False)
+            application.user = request.user
+            application.save()
+            messages.success(request,"Application Updated")
+            return redirect('home_view')  # Redirect to the same view after saving
+    else:
+        # If the user has an existing application, use it as the initial data; otherwise, create a new form
+        form = ApplicationsForm(instance=existing_application) if existing_application else ApplicationsForm()
+        
+    context = {'form': form}
+    return render(request, 'home/homepage.html', context)
 
 
 def calculate_interest_score(interest_set1, interest_set2):
