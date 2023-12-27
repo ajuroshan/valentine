@@ -26,7 +26,7 @@
         <form method="post" action="">
             {% csrf_token %}
             {% crispy form %}
-            <button class="m-5 px-4 py-2 hover:text[#fff]  border rounded bg-red " type="submit">Submit</button>
+            <button class="m-5 px-4 py-2 hover:text-red-600 border rounded transition ease-in-out duration-500 " type="submit">Submit</button>
         </form>
         {% for message in messages %}
             <p>{{ message }}</p>
