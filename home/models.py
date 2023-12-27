@@ -3,13 +3,6 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-INTEREST_CHOICES = [
-    ('anime', 'Anime'),
-    ('movies', 'Movies'),
-    ('books', 'Books'),
-    # Add more interests as needed
-]
-
 class Interests(models.Model):
     interset = models.CharField(max_length=20,default='')
     description = models.CharField(max_length=20,default='')
@@ -22,6 +15,10 @@ class Applications(models.Model):
     age = models.PositiveIntegerField(default=1)
     gender = models.CharField(max_length=10, choices = (('male','male'),('female','female')),blank = True)
     interests = models.ManyToManyField(Interests)
+    campus = models.CharField(max_length=15 , choices = (('maincampus','maincampus'),('soe','soe')), blank = True)
+    year = models.PositiveIntegerField(choices = ((1,1),(2,2),(3,3),(4,4),(5,5)),default = 0)
+    match_with_same_year = models.BooleanField(default=False)
+    match_with_same_campus = models.BooleanField(default=False)
 
     def __str__(self):
         return self.user.username
