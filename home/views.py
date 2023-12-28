@@ -92,3 +92,7 @@ def match_view(request):
         response_text = "No match found."
 
     return HttpResponse(response_text)
+
+
+def test_function_for_test_branch():
+    pass
