@@ -90,6 +90,7 @@ def match_view(request):
         response_text = f"Your Match: {user_match.female_application.user.username} - Match Percentage: {user_match.match_percentage}%"
     else:
         response_text = "No match found."
+        pass
 
     return HttpResponse(response_text)
 
